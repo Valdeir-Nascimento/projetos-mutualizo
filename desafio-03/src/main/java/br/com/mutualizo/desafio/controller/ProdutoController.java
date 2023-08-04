@@ -1,10 +1,11 @@
 package br.com.mutualizo.desafio.controller;
 
+import br.com.mutualizo.desafio.dto.PrecoProdutoDTO;
 import br.com.mutualizo.desafio.dto.request.ProdutoRequest;
 import br.com.mutualizo.desafio.dto.response.EstoqueProdutoResponse;
 import br.com.mutualizo.desafio.dto.response.ProdutoResponse;
 import br.com.mutualizo.desafio.service.ICadastrarProdutoService;
-import br.com.mutualizo.desafio.service.IEditarProdutoService;
+import br.com.mutualizo.desafio.service.IEditarPrecoProdutoService;
 import br.com.mutualizo.desafio.service.IEstoqueProdutoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,15 +19,15 @@ public class ProdutoController {
 
     private final ICadastrarProdutoService cadastrarProdutoService;
     private final IEstoqueProdutoService estoqueProdutoService;
-    private final IEditarProdutoService editarProdutoService;
+    private final IEditarPrecoProdutoService editarPrecoProdutoService;
 
     public ProdutoController(
         ICadastrarProdutoService cadastrarProdutoService,
         IEstoqueProdutoService estoqueProdutoService,
-        IEditarProdutoService editarProdutoService) {
+        IEditarPrecoProdutoService editarPrecoProdutoService) {
         this.cadastrarProdutoService = cadastrarProdutoService;
         this.estoqueProdutoService = estoqueProdutoService;
-        this.editarProdutoService = editarProdutoService;
+        this.editarPrecoProdutoService = editarPrecoProdutoService;
     }
 
     @PostMapping
@@ -42,8 +43,8 @@ public class ProdutoController {
     }
 
     @PutMapping("/{idProduto}")
-    public ResponseEntity<ProdutoResponse> editar(@PathVariable Long idProduto, @Valid @RequestBody ProdutoRequest request) {
-        ProdutoResponse response = editarProdutoService.editar(idProduto, request);
+    public ResponseEntity<PrecoProdutoDTO> editar(@PathVariable Long idProduto, @Valid @RequestBody PrecoProdutoDTO request) {
+        PrecoProdutoDTO response = editarPrecoProdutoService.editar(idProduto, request);
         return ResponseEntity.ok().body(response);
     }
 

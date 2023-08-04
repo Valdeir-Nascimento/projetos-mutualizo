@@ -1,38 +1,33 @@
 package br.com.mutualizo.desafio.service.impl;
 
-import br.com.mutualizo.desafio.dto.request.ProdutoRequest;
-import br.com.mutualizo.desafio.dto.response.ProdutoResponse;
-import br.com.mutualizo.desafio.mapper.ICopyToProperties;
+import br.com.mutualizo.desafio.dto.PrecoProdutoDTO;
 import br.com.mutualizo.desafio.mapper.IResponseMapper;
 import br.com.mutualizo.desafio.model.Produto;
 import br.com.mutualizo.desafio.repository.IProdutoRepository;
 import br.com.mutualizo.desafio.service.IBuscarProdutoService;
-import br.com.mutualizo.desafio.service.IEditarProdutoService;
+import br.com.mutualizo.desafio.service.IEditarPrecoProdutoService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class EditarProdutoServiceImpl implements IEditarProdutoService {
+public class EditarPrecoProdutoServiceImpl implements IEditarPrecoProdutoService {
 
     private final IProdutoRepository produtoRepository;
-    private final IResponseMapper<ProdutoResponse, Produto> responseMapper;
-    private final ICopyToProperties<ProdutoRequest, Produto> copyToProperties;
+    private final IResponseMapper<PrecoProdutoDTO, Produto> responseMapper;
     private final IBuscarProdutoService buscarProdutoService;
 
-    public EditarProdutoServiceImpl(
+    public EditarPrecoProdutoServiceImpl(
         IProdutoRepository produtoRepository,
-        IResponseMapper<ProdutoResponse, Produto> responseMapper,
-        ICopyToProperties<ProdutoRequest, Produto> copyToProperties,
+        IResponseMapper<PrecoProdutoDTO, Produto> responseMapper,
         IBuscarProdutoService buscarProdutoService) {
         this.produtoRepository = produtoRepository;
         this.responseMapper = responseMapper;
-        this.copyToProperties = copyToProperties;
         this.buscarProdutoService = buscarProdutoService;
     }
 
     @Override
-    public ProdutoResponse editar(Long idProduto, ProdutoRequest request) {
+    public PrecoProdutoDTO editar(Long idProduto, PrecoProdutoDTO request) {
         Produto produtoAtual = buscarProdutoService.buscar(idProduto);
-        copyToProperties.copy(request, produtoAtual);
+        produtoAtual.setPreco(request.getPreco());
         produtoAtual = produtoRepository.save(produtoAtual);
         return responseMapper.toResponse(produtoAtual);
     }
