@@ -4,6 +4,7 @@ import br.com.mutualizo.desafio.dto.request.ProdutoRequest;
 import br.com.mutualizo.desafio.dto.response.EstoqueProdutoResponse;
 import br.com.mutualizo.desafio.dto.response.ProdutoResponse;
 import br.com.mutualizo.desafio.service.ICadastrarProdutoService;
+import br.com.mutualizo.desafio.service.IEditarProdutoService;
 import br.com.mutualizo.desafio.service.IEstoqueProdutoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,12 +17,16 @@ import javax.validation.Valid;
 public class ProdutoController {
 
     private final ICadastrarProdutoService cadastrarProdutoService;
-
     private final IEstoqueProdutoService estoqueProdutoService;
+    private final IEditarProdutoService editarProdutoService;
 
-    public ProdutoController(ICadastrarProdutoService cadastrarProdutoService, IEstoqueProdutoService estoqueProdutoService) {
+    public ProdutoController(
+        ICadastrarProdutoService cadastrarProdutoService,
+        IEstoqueProdutoService estoqueProdutoService,
+        IEditarProdutoService editarProdutoService) {
         this.cadastrarProdutoService = cadastrarProdutoService;
         this.estoqueProdutoService = estoqueProdutoService;
+        this.editarProdutoService = editarProdutoService;
     }
 
     @PostMapping
@@ -33,6 +38,12 @@ public class ProdutoController {
     @GetMapping("/{idProduto}")
     public ResponseEntity<EstoqueProdutoResponse> consultarEstoque(@PathVariable Long idProduto) {
         EstoqueProdutoResponse response = estoqueProdutoService.consultar(idProduto);
+        return ResponseEntity.ok().body(response);
+    }
+
+    @PutMapping("/{idProduto}")
+    public ResponseEntity<ProdutoResponse> editar(@PathVariable Long idProduto, @Valid @RequestBody ProdutoRequest request) {
+        ProdutoResponse response = editarProdutoService.editar(idProduto, request);
         return ResponseEntity.ok().body(response);
     }
 

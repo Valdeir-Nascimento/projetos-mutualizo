@@ -3,7 +3,6 @@ package br.com.mutualizo.desafio.service.impl;
 import br.com.mutualizo.desafio.dto.request.ProdutoRequest;
 import br.com.mutualizo.desafio.dto.response.ProdutoResponse;
 import br.com.mutualizo.desafio.mapper.ICopyToProperties;
-import br.com.mutualizo.desafio.mapper.IRequestMapper;
 import br.com.mutualizo.desafio.mapper.IResponseMapper;
 import br.com.mutualizo.desafio.model.Produto;
 import br.com.mutualizo.desafio.repository.IProdutoRepository;
@@ -22,7 +21,8 @@ public class EditarProdutoServiceImpl implements IEditarProdutoService {
     public EditarProdutoServiceImpl(
         IProdutoRepository produtoRepository,
         IResponseMapper<ProdutoResponse, Produto> responseMapper,
-        ICopyToProperties<ProdutoRequest, Produto> copyToProperties, IBuscarProdutoService buscarProdutoService) {
+        ICopyToProperties<ProdutoRequest, Produto> copyToProperties,
+        IBuscarProdutoService buscarProdutoService) {
         this.produtoRepository = produtoRepository;
         this.responseMapper = responseMapper;
         this.copyToProperties = copyToProperties;
