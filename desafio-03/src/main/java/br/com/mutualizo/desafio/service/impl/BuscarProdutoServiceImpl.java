@@ -7,11 +7,11 @@ import br.com.mutualizo.desafio.repository.IProdutoRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class IBuscarProdutoServiceImpl implements IBuscarProdutoService {
+public class BuscarProdutoServiceImpl implements IBuscarProdutoService {
 
     private final IProdutoRepository produtoRepository;
 
-    public IBuscarProdutoServiceImpl(IProdutoRepository produtoRepository) {
+    public BuscarProdutoServiceImpl(IProdutoRepository produtoRepository) {
         this.produtoRepository = produtoRepository;
     }
 
