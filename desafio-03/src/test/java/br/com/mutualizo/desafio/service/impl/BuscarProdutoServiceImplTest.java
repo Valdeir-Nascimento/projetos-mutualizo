@@ -45,7 +45,7 @@ class BuscarProdutoServiceImplTest {
     @DisplayName("Dado um produto quando buscar por id então deve lançar exception")
     void dadoUmProdutoQuandoBuscarPorIdEntaoDeveLancarException() {
         when(produtoRepository.findById(anyLong())).thenReturn(Optional.empty());
-        assertThrows(ProdutoNaoEncontradoException.class, ()-> buscarProdutoService.buscar(anyLong()));
+        assertThrows(ProdutoNaoEncontradoException.class, () -> buscarProdutoService.buscar(anyLong()));
     }
 
 }
