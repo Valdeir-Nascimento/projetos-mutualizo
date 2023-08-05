@@ -1,7 +1,9 @@
 package br.com.mutualizo.desafio.controller;
 
 import br.com.mutualizo.desafio.dto.request.ProdutoRequest;
+import br.com.mutualizo.desafio.dto.response.EstoqueProdutoResponse;
 import br.com.mutualizo.desafio.dto.response.ProdutoResponse;
+import br.com.mutualizo.desafio.exception.ProdutoNaoEncontradoException;
 import br.com.mutualizo.desafio.service.ICadastrarProdutoService;
 import br.com.mutualizo.desafio.service.IEditarPrecoProdutoService;
 import br.com.mutualizo.desafio.service.IEstoqueProdutoService;
@@ -10,20 +12,18 @@ import br.com.mutualizo.desafio.util.ResourceUtil;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(MockitoExtension.class)
 @WebMvcTest(ProdutoController.class)
@@ -61,6 +61,25 @@ class ProdutoControllerTest {
         mockMvc.perform(post(PATH)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(jsonProdutoInvalido))
+                .andExpect(status().is4xxClientError());
+    }
+
+    @Test
+    @DisplayName("Dado um produto existente quando buscar por id então deve retornar estoque")
+    public void dadoUmProdutoExistenteQuandoBuscarPorIdEntaoDeveRetornarEstoqueComStatus200() throws Exception {
+        Long idProduto = 1L;
+        EstoqueProdutoResponse estoqueAtual = MockUtil.getEstoqueProdutoResponse();
+        when(estoqueProdutoService.consultar(idProduto)).thenReturn(estoqueAtual);
+        mockMvc.perform(get(PATH + "/{idProduto}", idProduto ))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    @DisplayName("Dado um produto não existente quando buscar por id então deve retornar exception com status code 404")
+    public void dadoUmProdutoExistenteQuandoConsultarPorIdEntaoDeveRetornarEstoqueComStatus404() throws Exception {
+        Long idProduto = 999L;
+        when(estoqueProdutoService.consultar(idProduto)).thenThrow(ProdutoNaoEncontradoException.class);
+        mockMvc.perform(get(PATH + "/{idProduto}", idProduto ))
                 .andExpect(status().is4xxClientError());
     }
 
