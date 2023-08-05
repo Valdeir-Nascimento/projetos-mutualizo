@@ -32,6 +32,7 @@ class CadastrarProdutoServiceImplTest {
     private Produto produto;
     private ProdutoResponse response;
     private ProdutoRequest request;
+
     @BeforeEach
     void setup() {
         produto = MockUtil.getProduto();
