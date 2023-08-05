@@ -3,6 +3,7 @@ package br.com.mutualizo.desafio.util;
 import br.com.mutualizo.desafio.dto.request.PrecoProdutoRequest;
 import br.com.mutualizo.desafio.dto.request.ProdutoRequest;
 import br.com.mutualizo.desafio.dto.response.EstoqueProdutoResponse;
+import br.com.mutualizo.desafio.dto.response.PrecoProdutoResponse;
 import br.com.mutualizo.desafio.dto.response.ProdutoResponse;
 import br.com.mutualizo.desafio.model.Produto;
 
@@ -46,6 +47,12 @@ public class MockUtil {
     public static EstoqueProdutoResponse getEstoqueProdutoResponse() {
         EstoqueProdutoResponse response = new EstoqueProdutoResponse();
         response.setEstoque(10);
+        return response;
+    }
+
+    public static PrecoProdutoResponse getPrecoProdutoResponse() {
+        PrecoProdutoResponse response = new PrecoProdutoResponse();
+        response.setPreco(999.90);
         return response;
     }
 
