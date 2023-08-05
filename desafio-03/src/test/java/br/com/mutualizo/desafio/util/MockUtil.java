@@ -1,6 +1,7 @@
 package br.com.mutualizo.desafio.util;
 
 import br.com.mutualizo.desafio.dto.request.ProdutoRequest;
+import br.com.mutualizo.desafio.dto.response.ProdutoResponse;
 import br.com.mutualizo.desafio.model.Produto;
 
 public class MockUtil {
@@ -22,6 +23,15 @@ public class MockUtil {
         produto.setPreco(4999.90);
         produto.setEstoque(10);
         return produto;
+    }
+
+    public static ProdutoResponse getProdutoResponse() {
+        ProdutoResponse response = new ProdutoResponse();
+        response.setId(1L);
+        response.setNome("TV 50 Polegadas");
+        response.setPreco(4999.90);
+        response.setEstoque(10);
+        return response;
     }
 
 }
