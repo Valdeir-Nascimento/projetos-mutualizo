@@ -2,6 +2,7 @@ package br.com.mutualizo.desafio.exception.handler;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Builder;
@@ -35,6 +36,6 @@ public class Problem {
     private String userMessage;
 
     @ApiModelProperty(value = "Lista de objetos ou campos que geraram o erro (opcional)", position = 30)
-    private List<Field> objects;
+    private List<Field> fields;
 
 }

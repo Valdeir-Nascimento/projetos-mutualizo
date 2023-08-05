@@ -140,7 +140,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
         Problem problem = createProblemBuilder(status, problemType, detail)
                 .userMessage(detail)
-                .objects(problemObjects)
+                .fields(problemObjects)
                 .build();
 
         return handleExceptionInternal(ex, problem, headers, status, request);

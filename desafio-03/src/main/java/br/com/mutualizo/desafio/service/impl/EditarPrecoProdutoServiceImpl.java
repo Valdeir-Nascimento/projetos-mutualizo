@@ -1,6 +1,7 @@
 package br.com.mutualizo.desafio.service.impl;
 
-import br.com.mutualizo.desafio.dto.PrecoProdutoDTO;
+import br.com.mutualizo.desafio.dto.request.PrecoProdutoRequest;
+import br.com.mutualizo.desafio.dto.response.PrecoProdutoResponse;
 import br.com.mutualizo.desafio.mapper.IResponseMapper;
 import br.com.mutualizo.desafio.model.Produto;
 import br.com.mutualizo.desafio.repository.IProdutoRepository;
@@ -12,12 +13,12 @@ import org.springframework.stereotype.Service;
 public class EditarPrecoProdutoServiceImpl implements IEditarPrecoProdutoService {
 
     private final IProdutoRepository produtoRepository;
-    private final IResponseMapper<PrecoProdutoDTO, Produto> responseMapper;
+    private final IResponseMapper<PrecoProdutoResponse, Produto> responseMapper;
     private final IBuscarProdutoService buscarProdutoService;
 
     public EditarPrecoProdutoServiceImpl(
         IProdutoRepository produtoRepository,
-        IResponseMapper<PrecoProdutoDTO, Produto> responseMapper,
+        IResponseMapper<PrecoProdutoResponse, Produto> responseMapper,
         IBuscarProdutoService buscarProdutoService) {
         this.produtoRepository = produtoRepository;
         this.responseMapper = responseMapper;
@@ -25,7 +26,7 @@ public class EditarPrecoProdutoServiceImpl implements IEditarPrecoProdutoService
     }
 
     @Override
-    public PrecoProdutoDTO editar(Long idProduto, PrecoProdutoDTO request) {
+    public PrecoProdutoResponse editar(Long idProduto, PrecoProdutoRequest request) {
         Produto produtoAtual = buscarProdutoService.buscar(idProduto);
         produtoAtual.setPreco(request.getPreco());
         produtoAtual = produtoRepository.save(produtoAtual);

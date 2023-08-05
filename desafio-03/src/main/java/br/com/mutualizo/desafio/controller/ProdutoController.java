@@ -1,8 +1,9 @@
 package br.com.mutualizo.desafio.controller;
 
-import br.com.mutualizo.desafio.dto.PrecoProdutoDTO;
+import br.com.mutualizo.desafio.dto.request.PrecoProdutoRequest;
 import br.com.mutualizo.desafio.dto.request.ProdutoRequest;
 import br.com.mutualizo.desafio.dto.response.EstoqueProdutoResponse;
+import br.com.mutualizo.desafio.dto.response.PrecoProdutoResponse;
 import br.com.mutualizo.desafio.dto.response.ProdutoResponse;
 import br.com.mutualizo.desafio.service.ICadastrarProdutoService;
 import br.com.mutualizo.desafio.service.IEditarPrecoProdutoService;
@@ -43,8 +44,8 @@ public class ProdutoController {
     }
 
     @PutMapping("/{idProduto}")
-    public ResponseEntity<PrecoProdutoDTO> editar(@PathVariable Long idProduto, @Valid @RequestBody PrecoProdutoDTO request) {
-        PrecoProdutoDTO response = editarPrecoProdutoService.editar(idProduto, request);
+    public ResponseEntity<PrecoProdutoResponse> editar(@PathVariable Long idProduto, @Valid @RequestBody PrecoProdutoRequest request) {
+        PrecoProdutoResponse response = editarPrecoProdutoService.editar(idProduto, request);
         return ResponseEntity.ok().body(response);
     }
 
