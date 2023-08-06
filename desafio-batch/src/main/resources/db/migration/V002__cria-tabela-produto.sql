@@ -1,0 +1,6 @@
+CREATE TABLE Produto
+(
+    id    INT AUTO_INCREMENT PRIMARY KEY,
+    nome  VARCHAR(100) NOT NULL,
+    preco DOUBLE       NOT NULL
+);
