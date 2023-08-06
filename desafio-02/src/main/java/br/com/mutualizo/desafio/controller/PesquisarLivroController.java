@@ -2,7 +2,6 @@ package br.com.mutualizo.desafio.controller;
 
 import br.com.mutualizo.desafio.dto.BookDTO;
 import br.com.mutualizo.desafio.service.IPesquisarLivroPorTituloService;
-import br.com.mutualizo.desafio.service.impl.PesquisarLivroPorTituloServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
