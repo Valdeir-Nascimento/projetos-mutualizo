@@ -12,7 +12,7 @@
 	<artifactId>desafio-02</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>desafio-02</name>
-	<description>Integração com api do google books</description>
+	<description>Integração com api do google bookInfoRespons</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
