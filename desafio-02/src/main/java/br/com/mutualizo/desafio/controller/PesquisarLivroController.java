@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/livros")
+@RequestMapping(path = "/api/v1/livros")
 public class PesquisarLivroController {
 
     private final IPesquisarLivroPorTituloService pesquisarLivroPorTitulo;
 
-    public PesquisarLivroController(PesquisarLivroPorTituloServiceImpl pesquisarLivroPorTitulo) {
+    public PesquisarLivroController(IPesquisarLivroPorTituloService pesquisarLivroPorTitulo) {
         this.pesquisarLivroPorTitulo = pesquisarLivroPorTitulo;
     }
 
