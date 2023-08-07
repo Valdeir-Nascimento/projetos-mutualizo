@@ -1,5 +1,6 @@
 package br.com.mutualizo.desafio.controller;
 
+import br.com.mutualizo.desafio.controller.openapi.ProdutoControllerOpenApi;
 import br.com.mutualizo.desafio.dto.request.PrecoProdutoRequest;
 import br.com.mutualizo.desafio.dto.request.ProdutoRequest;
 import br.com.mutualizo.desafio.dto.response.EstoqueProdutoResponse;
@@ -8,6 +9,7 @@ import br.com.mutualizo.desafio.dto.response.ProdutoResponse;
 import br.com.mutualizo.desafio.service.ICadastrarProdutoService;
 import br.com.mutualizo.desafio.service.IEditarPrecoProdutoService;
 import br.com.mutualizo.desafio.service.IEstoqueProdutoService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,21 +17,13 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping(path = "/api/v1/produtos")
-public class ProdutoController {
+public class ProdutoController implements ProdutoControllerOpenApi {
 
     private final ICadastrarProdutoService cadastrarProdutoService;
     private final IEstoqueProdutoService estoqueProdutoService;
     private final IEditarPrecoProdutoService editarPrecoProdutoService;
-
-    public ProdutoController(
-        ICadastrarProdutoService cadastrarProdutoService,
-        IEstoqueProdutoService estoqueProdutoService,
-        IEditarPrecoProdutoService editarPrecoProdutoService) {
-        this.cadastrarProdutoService = cadastrarProdutoService;
-        this.estoqueProdutoService = estoqueProdutoService;
-        this.editarPrecoProdutoService = editarPrecoProdutoService;
-    }
 
     @PostMapping
     public ResponseEntity<ProdutoResponse> cadastrar(@Valid @RequestBody ProdutoRequest request) {

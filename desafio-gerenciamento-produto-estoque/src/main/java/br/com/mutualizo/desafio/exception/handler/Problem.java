@@ -2,9 +2,7 @@ package br.com.mutualizo.desafio.exception.handler;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -13,29 +11,29 @@ import java.util.List;
 
 @Getter
 @Builder
-@ApiModel("JsonError")
+@Schema(name = "JsonError")
 @JsonInclude(Include.NON_NULL)
 public class Problem {
 
-    @ApiModelProperty(example = "400", position = 1)
+    @Schema(example = "400")
     private Integer status;
 
-    @ApiModelProperty(example = "2019-12-01T18:09:02.70844Z", position = 5)
+    @Schema(example = "2019-12-01T18:09:02.70844Z")
     private OffsetDateTime timestamp;
 
-    @ApiModelProperty(example = "https://mutualizo.com.br/dados-invalidos", position = 10)
+    @Schema(example = "https://mutualizo.com.br/dados-invalidos")
     private String type;
 
-    @ApiModelProperty(example = "Dados inválidos", position = 15)
+    @Schema(example = "Dados inválidos")
     private String title;
 
-    @ApiModelProperty(example = "Um ou mais campos estão inválidos. Faça o preenchimento correto e tente novamente.", position = 20)
+    @Schema(example = "Um ou mais campos estão inválidos. Faça o preenchimento correto e tente novamente.")
     private String detail;
 
-    @ApiModelProperty(example = "Um ou mais campos estão inválidos. Faça o preenchimento correto e tente novamente.", position = 25)
+    @Schema(example = "Um ou mais campos estão inválidos. Faça o preenchimento correto e tente novamente.")
     private String userMessage;
 
-    @ApiModelProperty(value = "Lista de objetos ou campos que geraram o erro (opcional)", position = 30)
+    @Schema(description = "Lista de objetos ou campos que geraram o erro (opcional)")
     private List<Field> fields;
 
 }

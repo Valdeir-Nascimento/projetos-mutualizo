@@ -16,7 +16,7 @@
     <properties>
         <java.version>17</java.version>
         <modelmapper.version>2.3.0</modelmapper.version>
-        <springfox.version>2.9.2</springfox.version>
+        <springdoc.version>1.6.9</springdoc.version>
     </properties>
     <dependencies>
         <dependency>
@@ -62,17 +62,15 @@
         </dependency>
 
         <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>${springfox.version}</version>
-            <scope>compile</scope>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>${springdoc.version}</version>
         </dependency>
 
         <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>${springfox.version}</version>
-            <scope>compile</scope>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-hateoas</artifactId>
+            <version>${springdoc.version}</version>
         </dependency>
 
         <dependency>
