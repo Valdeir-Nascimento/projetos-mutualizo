@@ -14,7 +14,7 @@ Certifique-se de que a aplicação esteja em execução para acessar a documenta
 
 Siga as etapas abaixo para executar a aplicação:
 
-1. Clone este repositório: `git clone https://github.com/seu-usuario/seu-repositorio.git`
+1. Clone este repositório: `git clone https://github.com/Valdeir-Nascimento/projetos-mutualizo`
 2. Navegue até o diretório da aplicação: `cd nome-da-aplicacao`
 3. Execute o aplicativo: `./mvnw spring-boot:run` (ou use o comando apropriado para o seu ambiente)
 
