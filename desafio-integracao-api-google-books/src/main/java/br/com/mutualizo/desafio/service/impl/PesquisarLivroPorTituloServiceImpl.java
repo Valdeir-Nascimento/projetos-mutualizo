@@ -5,6 +5,7 @@ import br.com.mutualizo.desafio.dto.response.BookResponse;
 import br.com.mutualizo.desafio.mapper.IBookMapper;
 import br.com.mutualizo.desafio.service.IPesquisarLivroPorTituloService;
 import br.com.mutualizo.desafio.service.IPreparaUrlApiGoogleBooks;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -12,17 +13,12 @@ import java.util.Collections;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class PesquisarLivroPorTituloServiceImpl implements IPesquisarLivroPorTituloService {
 
     private final RestTemplate restTemplate;
     private final IBookMapper bookMapper;
     private final IPreparaUrlApiGoogleBooks preparaUrlApiGoogleBooks;
-
-    public PesquisarLivroPorTituloServiceImpl(RestTemplate restTemplate, IBookMapper bookMapper, IPreparaUrlApiGoogleBooks preparaUrlApiGoogleBooks) {
-        this.restTemplate = restTemplate;
-        this.bookMapper = bookMapper;
-        this.preparaUrlApiGoogleBooks = preparaUrlApiGoogleBooks;
-    }
 
     @Override
     public List<BookDTO> pesquisar(String titulo) {
