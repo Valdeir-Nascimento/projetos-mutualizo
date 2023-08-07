@@ -12,7 +12,7 @@ public class Fibonacci {
     *
     *
     * Solução: Para corrigir esse problema podemos utilizar programação dinâmica ou
-    * memoização para evitar o recalculo dos mesmos valorres várias vezes.
+    * memoização para evitar o recalculo dos mesmos valores várias vezes.
     * */
 
     public static int getNthFibonacci(int n) {
