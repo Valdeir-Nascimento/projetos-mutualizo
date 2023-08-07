@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @RestController
@@ -22,7 +21,7 @@ public class PesquisarLivroController {
     }
 
     @GetMapping
-    public ResponseEntity<List<BookDTO>> pesquisar(@RequestParam @NotBlank String titulo) {
+    public ResponseEntity<List<BookDTO>> pesquisar(@RequestParam String titulo) {
         List<BookDTO> books = pesquisarLivroPorTitulo.pesquisar(titulo);
         return ResponseEntity.ok().body(books);
     }

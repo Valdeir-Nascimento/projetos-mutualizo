@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.com.mutualizo.desafio</groupId>
-	<artifactId>desafio-02</artifactId>
+	<artifactId>desafio-integracao-api-google-books</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>desafio-02</name>
-	<description>Integração com api do google bookInfoRespons</description>
+	<description>Desafio integração entre sistemas</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>

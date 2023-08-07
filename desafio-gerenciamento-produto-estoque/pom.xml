@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>br.com.mutualizo.desafio</groupId>
-    <artifactId>desafio-03</artifactId>
+    <artifactId>desafio-gerenciamento-produto-estoque</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>desafio-03</name>
-    <description>Demo project for Spring Boot</description>
+    <description>Desafio banco de dados e consultas SQL</description>
     <properties>
         <java.version>17</java.version>
         <modelmapper.version>2.3.0</modelmapper.version>
