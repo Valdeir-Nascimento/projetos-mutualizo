@@ -1,6 +1,6 @@
 # Desafio Mutualizo
 
-Bem-vindo à documentação da API! Aqui você encontrará informações sobre os endpoints disponíveis e como usá-los.
+Aqui você encontrará informações sobre os endpoints disponíveis e como usá-los.
 
 ## Documentação da API
 
